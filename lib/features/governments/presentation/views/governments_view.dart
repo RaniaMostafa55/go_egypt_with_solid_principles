@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_egypt_with_firebase/features/governments/views/widgets/government_card_item.dart';
-import 'package:go_egypt_with_firebase/features/governments/views/widgets/shimmer_government_card_item.dart';
+import 'package:go_egypt_with_firebase/features/governments/presentation/bloc/governments_bloc.dart';
+import 'package:go_egypt_with_firebase/features/governments/presentation/bloc/governments_event.dart';
+import 'package:go_egypt_with_firebase/features/governments/presentation/bloc/governments_state.dart';
+import 'package:go_egypt_with_firebase/features/governments/presentation/views/widgets/government_card_item.dart';
+import 'package:go_egypt_with_firebase/features/governments/presentation/views/widgets/shimmer_government_card_item.dart';
 import 'package:go_egypt_with_firebase/generated/l10n.dart';
-import '../../../core/blocs/governments_bloc/governments_bloc.dart';
-import '../../../core/blocs/governments_bloc/governments_event.dart';
-import '../../../core/blocs/governments_bloc/governments_state.dart';
 
 class GovernmentsView extends StatefulWidget {
   const GovernmentsView({super.key});
@@ -46,8 +46,8 @@ class _GovernmentsViewState extends State<GovernmentsView> {
               physics: const BouncingScrollPhysics(),
               itemCount: state.governments.length,
               itemBuilder: (context, index) {
-                final governorate = state.governments[index];
-                return GovernmentCardItem(governorate: governorate);
+                final government = state.governments[index];
+                return GovernmentCardItem(government: government);
               },
             );
           }

@@ -18,17 +18,20 @@ class S {
   static S? _current;
 
   static S get current {
-    assert(_current != null,
-        'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.');
+    assert(
+      _current != null,
+      'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.',
+    );
     return _current!;
   }
 
   static const AppLocalizationDelegate delegate = AppLocalizationDelegate();
 
   static Future<S> load(Locale locale) {
-    final name = (locale.countryCode?.isEmpty ?? false)
-        ? locale.languageCode
-        : locale.toString();
+    final name =
+        (locale.countryCode?.isEmpty ?? false)
+            ? locale.languageCode
+            : locale.toString();
     final localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
@@ -41,8 +44,10 @@ class S {
 
   static S of(BuildContext context) {
     final instance = S.maybeOf(context);
-    assert(instance != null,
-        'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?');
+    assert(
+      instance != null,
+      'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?',
+    );
     return instance!;
   }
 
@@ -52,22 +57,12 @@ class S {
 
   /// `Sign Up`
   String get sign_up {
-    return Intl.message(
-      'Sign Up',
-      name: 'sign_up',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Sign Up', name: 'sign_up', desc: '', args: []);
   }
 
   /// `Full Name`
   String get full_name {
-    return Intl.message(
-      'Full Name',
-      name: 'full_name',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Full Name', name: 'full_name', desc: '', args: []);
   }
 
   /// `Email Address`
@@ -82,12 +77,7 @@ class S {
 
   /// `Password`
   String get password {
-    return Intl.message(
-      'Password',
-      name: 'password',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Password', name: 'password', desc: '', args: []);
   }
 
   /// `Confirm Password`
@@ -162,12 +152,7 @@ class S {
 
   /// `Success`
   String get Success {
-    return Intl.message(
-      'Success',
-      name: 'Success',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Success', name: 'Success', desc: '', args: []);
   }
 
   /// `account created successfully`
@@ -182,22 +167,12 @@ class S {
 
   /// `close`
   String get close {
-    return Intl.message(
-      'close',
-      name: 'close',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('close', name: 'close', desc: '', args: []);
   }
 
   /// `Login`
   String get Login {
-    return Intl.message(
-      'Login',
-      name: 'Login',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Login', name: 'Login', desc: '', args: []);
   }
 
   /// `Phone Number`
@@ -262,32 +237,17 @@ class S {
 
   /// `Landmarks`
   String get landmarks {
-    return Intl.message(
-      'Landmarks',
-      name: 'landmarks',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Landmarks', name: 'landmarks', desc: '', args: []);
   }
 
   /// `Favorites`
   String get favorites {
-    return Intl.message(
-      'Favorites',
-      name: 'favorites',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Favorites', name: 'favorites', desc: '', args: []);
   }
 
   /// `Profile`
   String get profile {
-    return Intl.message(
-      'Profile',
-      name: 'profile',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Profile', name: 'profile', desc: '', args: []);
   }
 
   /// `Phone Number`
@@ -312,32 +272,17 @@ class S {
 
   /// `Edit`
   String get edit {
-    return Intl.message(
-      'Edit',
-      name: 'edit',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Edit', name: 'edit', desc: '', args: []);
   }
 
   /// `Confirm`
   String get confirm {
-    return Intl.message(
-      'Confirm',
-      name: 'confirm',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Confirm', name: 'confirm', desc: '', args: []);
   }
 
   /// `Back`
   String get back {
-    return Intl.message(
-      'Back',
-      name: 'back',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Back', name: 'back', desc: '', args: []);
   }
 
   /// `Profile has successfully updated`

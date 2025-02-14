@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_egypt_with_firebase/core/helpers/is_current_locale_english.dart';
-import 'package:go_egypt_with_firebase/features/governments/models/landmarks_model.dart';
+import 'package:go_egypt_with_firebase/features/governments/data/models/landmarks_model.dart';
 import 'package:go_egypt_with_firebase/generated/l10n.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';

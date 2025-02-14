@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_egypt_with_firebase/core/blocs/theme_bloc/theme_bloc.dart';
 import 'package:go_egypt_with_firebase/core/helpers/is_current_locale_english.dart';
-import 'package:go_egypt_with_firebase/features/governments/models/landmarks_model.dart';
+import 'package:go_egypt_with_firebase/features/governments/data/models/landmarks_model.dart';
 
 class LandmarkCardItem extends StatelessWidget {
   const LandmarkCardItem({

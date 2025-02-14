@@ -1,4 +1,4 @@
-import '../../../features/governments/models/governments_model.dart';
+import '../../domain/entities/government.dart';
 
 abstract class GovernmentsState {}
 
@@ -7,7 +7,7 @@ class GovernmentsInitial extends GovernmentsState {}
 class GovernmentsLoading extends GovernmentsState {}
 
 class GovernmentsLoaded extends GovernmentsState {
-  final List<Governorate> governments;
+  final List<Government> governments;
   GovernmentsLoaded(this.governments);
 }
 

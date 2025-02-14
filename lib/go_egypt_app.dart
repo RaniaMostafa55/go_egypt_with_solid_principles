@@ -7,6 +7,8 @@ import 'package:go_egypt_with_firebase/core/blocs/theme_bloc/theme_bloc.dart';
 import 'package:go_egypt_with_firebase/core/core_cubits/language_cubit.dart';
 import 'package:go_egypt_with_firebase/core/theme/theme.dart';
 import 'package:go_egypt_with_firebase/features/auth/views/login_page.dart';
+import 'package:go_egypt_with_firebase/features/governments/injection_container.dart';
+import 'package:go_egypt_with_firebase/features/governments/presentation/bloc/governments_bloc.dart';
 import 'package:go_egypt_with_firebase/features/home/data/data_source/cards_local_data_source.dart';
 import 'package:go_egypt_with_firebase/features/home/data/data_source/places_local_data_source.dart';
 import 'package:go_egypt_with_firebase/features/home/data/repositories/cards_repository_impl.dart';
@@ -14,7 +16,6 @@ import 'package:go_egypt_with_firebase/features/home/data/repositories/places_re
 import 'package:go_egypt_with_firebase/features/home/domain/usecases/get_cards.dart';
 import 'package:go_egypt_with_firebase/features/home/domain/usecases/get_places.dart';
 import 'package:go_egypt_with_firebase/generated/l10n.dart';
-import 'core/blocs/governments_bloc/governments_bloc.dart';
 import 'features/home/presentation/bloc/places_bloc.dart';
 
 class GoEgyptApp extends StatelessWidget {
@@ -40,7 +41,7 @@ class GoEgyptApp extends StatelessWidget {
                       cardsLocalDataSource: CardsLocalDataSourceImpl()))),
         ),
         BlocProvider(
-          create: (context) => GovernmentsBloc(),
+          create: (context) => sl<GovernmentsBloc>(),
         ),
         BlocProvider(
           // create: (context) => ProfileBloc ()..add(LoadProfile()),
