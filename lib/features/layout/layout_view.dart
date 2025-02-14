@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_egypt_with_firebase/features/favorites/favorites_view.dart';
 import 'package:go_egypt_with_firebase/features/governments/views/governments_view.dart';
-import 'package:go_egypt_with_firebase/features/home/views/home_view.dart';
+import 'package:go_egypt_with_firebase/features/home/presentation/views/home_view.dart';
 import 'package:go_egypt_with_firebase/features/profile/views/profile_view.dart';
 import 'package:go_egypt_with_firebase/generated/l10n.dart';
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:go_egypt_with_firebase/features/home/widgets/shimmer_place_item.dart';
+import 'package:go_egypt_with_firebase/features/home/presentation/widgets/shimmer_place_item.dart';
 import 'package:shimmer/shimmer.dart';
 
 class ShimmerCardWidget extends StatelessWidget {

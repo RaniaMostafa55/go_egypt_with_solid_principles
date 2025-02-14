@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_egypt_with_firebase/features/home/models/card_model.dart';
-import 'package:go_egypt_with_firebase/features/home/widgets/card_widget.dart';
-import 'package:go_egypt_with_firebase/features/home/widgets/place_item_widget.dart';
-import 'package:go_egypt_with_firebase/features/home/widgets/shimmer_card_widget.dart';
-import 'package:go_egypt_with_firebase/features/home/widgets/shimmer_place_item.dart';
+import 'package:go_egypt_with_firebase/features/home/presentation/widgets/card_widget.dart';
+import 'package:go_egypt_with_firebase/features/home/presentation/widgets/place_item_widget.dart';
+import 'package:go_egypt_with_firebase/features/home/presentation/widgets/shimmer_card_widget.dart';
+import 'package:go_egypt_with_firebase/features/home/presentation/widgets/shimmer_place_item.dart';
 import 'package:go_egypt_with_firebase/generated/l10n.dart';
 
-import '../../../core/blocs/places_bloc/places_bloc.dart';
-import '../../../core/blocs/places_bloc/places_event.dart';
-import '../../../core/blocs/places_bloc/places_state.dart';
+import '../bloc/places_bloc.dart';
+import '../bloc/places_event.dart';
+import '../bloc/places_state.dart';
 
 class HomeView extends StatefulWidget {
   static const String routeName = 'home';
@@ -131,10 +130,10 @@ class _HomeViewState extends State<HomeView> {
                         ),
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, index) => CardWidget(
-                          card: CardModel.cards[index],
+                          card: state.cards[index],
                           place: state.places[index],
                         ),
-                        itemCount: 5,
+                        itemCount: state.cards.length,
                       ),
                     ),
                   ],

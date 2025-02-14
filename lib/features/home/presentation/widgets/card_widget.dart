@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_egypt_with_firebase/core/blocs/theme_bloc/theme_bloc.dart';
 import 'package:go_egypt_with_firebase/core/helpers/is_current_locale_english.dart';
-import 'package:go_egypt_with_firebase/features/home/models/card_model.dart';
-import 'package:go_egypt_with_firebase/features/home/widgets/place_item_widget.dart';
+import 'package:go_egypt_with_firebase/features/home/domain/entities/card_entity.dart';
+import 'package:go_egypt_with_firebase/features/home/presentation/widgets/place_item_widget.dart';
 
-import '../models/place_model.dart';
+import '../../domain/entities/place_entity.dart';
 
 class CardWidget extends StatefulWidget {
-  final CardModel card;
-  final PlaceModel place;
+  final CardEntity card;
+  final PlaceEntity place;
   const CardWidget({
     super.key,
     required this.card,

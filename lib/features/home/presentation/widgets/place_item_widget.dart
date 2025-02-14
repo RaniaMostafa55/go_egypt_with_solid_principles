@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_egypt_with_firebase/core/helpers/is_current_locale_english.dart';
-import 'package:go_egypt_with_firebase/features/home/models/place_model.dart';
+import 'package:go_egypt_with_firebase/features/home/domain/entities/place_entity.dart';
 
 class PlaceItemWidget extends StatelessWidget {
-  final PlaceModel place;
+  final PlaceEntity place;
   const PlaceItemWidget({super.key, required this.place});
 
   @override
