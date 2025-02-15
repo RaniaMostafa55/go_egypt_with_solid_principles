@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:go_egypt_with_firebase/features/favorites/favorites_view.dart';
+import 'package:go_egypt_with_firebase/features/favorites/presentation/views/favorites_view.dart';
 import 'package:go_egypt_with_firebase/features/governments/presentation/views/governments_view.dart';
 import 'package:go_egypt_with_firebase/features/home/presentation/views/home_view.dart';
 import 'package:go_egypt_with_firebase/features/profile/views/profile_view.dart';

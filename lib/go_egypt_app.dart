@@ -7,6 +7,8 @@ import 'package:go_egypt_with_firebase/core/blocs/theme_bloc/theme_bloc.dart';
 import 'package:go_egypt_with_firebase/core/core_cubits/language_cubit.dart';
 import 'package:go_egypt_with_firebase/core/theme/theme.dart';
 import 'package:go_egypt_with_firebase/features/auth/views/login_page.dart';
+import 'package:go_egypt_with_firebase/features/favorites/presentation/bloc/favorites_bloc.dart';
+import 'package:go_egypt_with_firebase/features/favorites/presentation/bloc/favorites_event.dart';
 import 'package:go_egypt_with_firebase/features/governments/injection_container.dart';
 import 'package:go_egypt_with_firebase/features/governments/presentation/bloc/governments_bloc.dart';
 import 'package:go_egypt_with_firebase/features/home/data/data_source/cards_local_data_source.dart';
@@ -46,6 +48,12 @@ class GoEgyptApp extends StatelessWidget {
         BlocProvider(
           // create: (context) => ProfileBloc ()..add(LoadProfile()),
           create: (context) => ProfileBloc(),
+        ),
+        BlocProvider(
+          create: (context) => sl<FavoritesBloc>()
+            ..add(
+              LoadFavorites(),
+            ),
         ),
       ],
       child: BlocBuilder<LanguageCubit, Locale>(
