@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_egypt_with_firebase/features/favorites/injection_container.dart';
 import 'package:go_egypt_with_firebase/features/favorites/presentation/views/favorites_view.dart';
+import 'package:go_egypt_with_firebase/features/governments/injection_container.dart';
 import 'package:go_egypt_with_firebase/features/governments/presentation/views/governments_view.dart';
 import 'package:go_egypt_with_firebase/features/home/presentation/views/home_view.dart';
 import 'package:go_egypt_with_firebase/features/profile/views/profile_view.dart';
@@ -16,7 +18,11 @@ class LayoutView extends StatefulWidget {
 
 class _LayoutViewState extends State<LayoutView> {
   int currentIndex = 0;
-
+@override
+  void initState() {
+  initGovernmentsDependencies();
+  initFavoritesDependencies();
+  }
   List<Widget> pages = [
     HomeView(),
     GovernmentsView(),
