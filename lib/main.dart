@@ -12,9 +12,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   
-  // Initialize dependencies
-  // initGovernmentsDependencies();
-  // initFavoritesDependencies();
+  initGovernmentsDependencies();
+  initFavoritesDependencies();
   
   runApp(
     BlocProvider(

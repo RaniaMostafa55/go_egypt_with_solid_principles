@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:go_egypt_with_firebase/core/blocs/profile/profile_bloc.dart';
+import 'package:go_egypt_with_firebase/features/profile/presentation/bloc/profile_bloc.dart';
 import 'package:go_egypt_with_firebase/core/blocs/theme_bloc/theme_bloc.dart';
 import 'package:go_egypt_with_firebase/core/core_cubits/language_cubit.dart';
 import 'package:go_egypt_with_firebase/core/theme/theme.dart';

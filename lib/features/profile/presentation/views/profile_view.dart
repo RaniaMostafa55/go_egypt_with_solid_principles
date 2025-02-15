@@ -2,7 +2,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_egypt_with_firebase/core/blocs/profile/profile_bloc.dart';
+import 'package:go_egypt_with_firebase/features/profile/presentation/bloc/profile_bloc.dart';
 import 'package:go_egypt_with_firebase/core/blocs/theme_bloc/theme_bloc.dart';
 import 'package:go_egypt_with_firebase/core/core_cubits/language_cubit.dart';
 import 'package:go_egypt_with_firebase/dialog_utils.dart';
@@ -125,7 +125,7 @@ class _ProfileViewState extends State<ProfileView> {
                       title: S
                           .of(context)
                           .phone_number,
-                      subtitle: profile.phone??'',
+                      subtitle: profile.phone,
                       id: 'phone',
                       onPressed: () {
                         EditingDialog.showEditDialog(context, 'phone',

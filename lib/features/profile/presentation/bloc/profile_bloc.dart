@@ -107,7 +107,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     final image = await picker.pickImage(
         source: changeImgWithCam ? ImageSource.camera : ImageSource.gallery);
     if (image != null) {
-      localImgPath = image!.path;
+      localImgPath = image.path;
     }
   }
 }

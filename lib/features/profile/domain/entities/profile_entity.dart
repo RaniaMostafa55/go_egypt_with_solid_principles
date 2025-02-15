@@ -14,25 +14,4 @@ class ProfileEntity {
     required this.password,
     this.imagePath,
   });
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is ProfileEntity &&
-          runtimeType == other.runtimeType &&
-          id == other.id &&
-          name == other.name &&
-          email == other.email &&
-          phone == other.phone &&
-          password == other.password &&
-          imagePath == other.imagePath;
-
-  @override
-  int get hashCode =>
-      id.hashCode ^
-      name.hashCode ^
-      email.hashCode ^
-      phone.hashCode ^
-      password.hashCode ^
-      imagePath.hashCode;
 }

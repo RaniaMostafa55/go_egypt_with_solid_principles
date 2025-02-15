@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_egypt_with_firebase/core/blocs/profile/profile_bloc.dart';
+import 'package:go_egypt_with_firebase/features/profile/presentation/bloc/profile_bloc.dart';
 import 'package:go_egypt_with_firebase/core/widgets/global_text_buttom.dart';
 import 'package:go_egypt_with_firebase/features/auth/data/models/signup_model.dart';
-import 'package:go_egypt_with_firebase/features/auth/domain/entities/signup_entity.dart';
+// import 'package:go_egypt_with_firebase/features/auth/domain/entities/signup_entity.dart';
 import 'package:go_egypt_with_firebase/features/profile/presentation/widgets/custom_editing_text_field.dart';
 import 'package:go_egypt_with_firebase/generated/l10n.dart';
 
