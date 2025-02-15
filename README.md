@@ -26,6 +26,10 @@ A mobile application for tourists visiting Egypt to explore landmarks, museums, 
 - **Accessing Device Features**
   - Open the camera to take a profile picture
   - Access the profile page through fingerprint first
+- **Clean Architecture**
+  - Group all the generalized folders, files, services, and methods into a `core` folder
+  - Group all the screen features into a `features` folder and separate each feature into the 3 layers (data - domain - presentation)
+  - Ensure that the code is written based on the SOLID principles 
 
 ## 🔥 Firebase Integration
 
