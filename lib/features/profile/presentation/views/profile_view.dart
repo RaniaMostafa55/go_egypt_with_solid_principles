@@ -1,12 +1,15 @@
+// import 'package:easy_localization/easy_localization.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_egypt_with_firebase/core/blocs/auth/auth_bloc.dart';
 import 'package:go_egypt_with_firebase/core/blocs/profile/profile_bloc.dart';
 import 'package:go_egypt_with_firebase/core/blocs/theme_bloc/theme_bloc.dart';
 import 'package:go_egypt_with_firebase/core/core_cubits/language_cubit.dart';
 import 'package:go_egypt_with_firebase/dialog_utils.dart';
-import 'package:go_egypt_with_firebase/features/auth/views/login_page.dart';
+import 'package:go_egypt_with_firebase/features/auth/presentation/auth_bloc/auth_bloc.dart';
+import 'package:go_egypt_with_firebase/features/auth/presentation/auth_bloc/auth_event.dart';
+import 'package:go_egypt_with_firebase/features/auth/presentation/auth_bloc/auth_state.dart';
+import 'package:go_egypt_with_firebase/features/auth/presentation/views/login_page.dart';
 import 'package:go_egypt_with_firebase/features/profile/presentation/widgets/custom_list_tile.dart';
 import 'package:go_egypt_with_firebase/features/profile/presentation/widgets/profile_pic_frame.dart';
 import 'package:go_egypt_with_firebase/features/profile/presentation/widgets/show_editing_dialog.dart';
@@ -44,21 +47,10 @@ class _ProfileViewState extends State<ProfileView> {
             DialogUtils.showLoading(context: context);
           });
         } else if (state is AuthUnauthenticated) {
-          WidgetsBinding.instance.addPostFrameCallback((_) {
-            DialogUtils.hideLoading(context);
-            DialogUtils.showMessage(
-              context: context,
-              message: 'Logout successfully',
-              title: 'Logout',
-              posMessageName: 'Ok',
-              posAction: () {
                 Navigator.of(context).pushReplacement(
                   MaterialPageRoute(builder: (context) => LoginPage()),
                 );
-              },
-            );
-          });
-        } else if (state is AuthError) {
+          } else if (state is AuthError) {
           WidgetsBinding.instance.addPostFrameCallback((_) {
             DialogUtils.hideLoading(context);
             DialogUtils.showMessage(
@@ -133,7 +125,7 @@ class _ProfileViewState extends State<ProfileView> {
                       title: S
                           .of(context)
                           .phone_number,
-                      subtitle: profile.phone,
+                      subtitle: profile.phone??'',
                       id: 'phone',
                       onPressed: () {
                         EditingDialog.showEditDialog(context, 'phone',

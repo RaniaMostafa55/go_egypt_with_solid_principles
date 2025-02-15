@@ -4,7 +4,7 @@ abstract class ProfileEvent {}
 
 class LoadProfile extends ProfileEvent {}
 class UpdateProfile extends ProfileEvent {
-  final UserProfile profileData;
+  final SignUpModel profileData;
 
    UpdateProfile({required this.profileData});
 }

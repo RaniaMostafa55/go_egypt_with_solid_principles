@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_egypt_with_firebase/core/helpers/shared_pref_helper.dart';
-import 'package:go_egypt_with_firebase/features/auth/user-profile.dart';
+import 'package:go_egypt_with_firebase/features/auth/data/models/signup_model.dart';
 import 'package:image_picker/image_picker.dart';
 part 'profile_event.dart';
 part 'profile_state.dart';
@@ -62,7 +62,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
         final email = await SharedPrefHelper.getString("email") ?? "";
         final password = await SharedPrefHelper.getString("pass") ?? "";
 
-        final user = UserProfile(
+        final user = SignUpModel(
           name: name,
           email: email,
           password: password,
@@ -82,25 +82,25 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     SharedPrefHelper.setData('path', deleteImagePath);
   }
 
-  Future<UserProfile> getUserData() async {
+  Future<SignUpModel> getUserData() async {
     String email = await SharedPrefHelper.getString('email');
-    late UserProfile user;
+    late SignUpModel user;
     await db.collection('users').get().then((event) {
       for (var doc in event.docs) {
-        if (UserProfile.fromFireStore(doc).email == email) {
-          user = UserProfile.fromFireStore(doc);
+        if (SignUpModel.fromFireStore(doc.data()).email == email) {
+          user = SignUpModel.fromFireStore(doc.data());
         }
       }
     });
     return user;
   }
 
-  updateUserData({required UserProfile user}) async {
+  updateUserData({required SignUpModel user}) async {
     String id = await SharedPrefHelper.getString('UserID');
     final washingtonRef = db.collection("users").doc(id);
     washingtonRef.update(user.toFireStore()).then(
           (value) => print("DocumentSnapshot successfully updated!"),
-        );
+    );
   }
 
   changeProfileImage() async {

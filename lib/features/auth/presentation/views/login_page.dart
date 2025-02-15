@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_egypt_with_firebase/core/blocs/auth/auth_bloc.dart';
 import 'package:go_egypt_with_firebase/dialog_utils.dart';
-import 'package:go_egypt_with_firebase/features/auth/views/sign_up_page.dart';
-import 'package:go_egypt_with_firebase/features/auth/widgets/auth_text_button.dart';
+import 'package:go_egypt_with_firebase/features/auth/domain/entities/login_entity.dart';
+import 'package:go_egypt_with_firebase/features/auth/presentation/auth_bloc/auth_bloc.dart';
+import 'package:go_egypt_with_firebase/features/auth/presentation/auth_bloc/auth_event.dart';
+import 'package:go_egypt_with_firebase/features/auth/presentation/auth_bloc/auth_state.dart';
+import 'package:go_egypt_with_firebase/features/auth/presentation/views/sign_up_page.dart';
+import 'package:go_egypt_with_firebase/features/auth/presentation/widgets/auth_text_button.dart';
+import 'package:go_egypt_with_firebase/features/auth/presentation/widgets/custom_button.dart';
+import 'package:go_egypt_with_firebase/features/auth/presentation/widgets/custom_text_field.dart';
+import 'package:go_egypt_with_firebase/features/auth/presentation/widgets/title_text.dart';
 import 'package:go_egypt_with_firebase/features/layout/layout_view.dart';
 import 'package:go_egypt_with_firebase/generated/l10n.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import '../widgets/custom_button.dart';
-import '../widgets/custom_text_field.dart';
-import '../widgets/title_text.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -26,12 +28,6 @@ class _LoginPageState extends State<LoginPage> {
   late final TextEditingController passwordController;
   final GlobalKey<FormState> _loginFormKey = GlobalKey<FormState>();
 
-  getCredentials() async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    email = prefs.getString("email") ?? "";
-    password = prefs.getString("pass") ?? "";
-    setState(() {});
-  }
 
   @override
   void dispose() {
@@ -45,7 +41,7 @@ class _LoginPageState extends State<LoginPage> {
     emailController = TextEditingController();
     passwordController = TextEditingController();
     super.initState();
-    getCredentials();
+
   }
 
   @override
@@ -133,10 +129,11 @@ class _LoginPageState extends State<LoginPage> {
                     onPressed: () {
                       //if the user inputs meet all requirements, navigate to another page
                       if (_loginFormKey.currentState!.validate()) {
-                        context.read<AuthBloc>().login(
-                            emailAddress: emailController.text,
-                            password: passwordController.text,
-                            context: context);
+                        context.read<AuthBloc>().add(
+                          LoginRequested(loginEntity:
+                             LoginEntity(email: emailController.text, password: passwordController.text)
+                          ),
+                        );
                       }
                     },
                     text: S.of(context).Login,
