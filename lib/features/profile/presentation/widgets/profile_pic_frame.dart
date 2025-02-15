@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_egypt_with_firebase/core/blocs/profile/profile_bloc.dart';
-import 'package:go_egypt_with_firebase/features/profile/widgets/image_option.dart';
+import 'package:go_egypt_with_firebase/features/profile/presentation/widgets/image_option.dart';
 
 class ProfilePicFrame extends StatelessWidget {
   const ProfilePicFrame({super.key, required this.img});

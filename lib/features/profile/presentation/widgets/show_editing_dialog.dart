@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_egypt_with_firebase/core/blocs/profile/profile_bloc.dart';
 import 'package:go_egypt_with_firebase/core/widgets/global_text_buttom.dart';
 import 'package:go_egypt_with_firebase/features/auth/user-profile.dart';
-import 'package:go_egypt_with_firebase/features/profile/widgets/custom_editing_text_field.dart';
+import 'package:go_egypt_with_firebase/features/profile/presentation/widgets/custom_editing_text_field.dart';
 import 'package:go_egypt_with_firebase/generated/l10n.dart';
 
 class EditingDialog {
