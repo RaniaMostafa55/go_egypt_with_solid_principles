@@ -19,19 +19,27 @@ class DialogUtils{
   }
   static void  showMessage({required BuildContext context, required String message , String? title, String?posMessageName,Function? posAction,String?negMessageName,Function? negAction}){
     List<Widget> actions = [];
-    if(posMessageName!= null && posAction!= null){
+    if(posMessageName!= null ){
       actions.add(
         TextButton(
           onPressed:(){
-            posAction.call();
+            Navigator.pop(context);
+            if(posAction !=null){
+              posAction.call();
+            }
           },
           child: Text(posMessageName),
         ),
       );
-    }if(negMessageName!= null && negAction!= null){
+    }if(negMessageName!= null ){
       actions.add(
         TextButton(
-          onPressed: negAction.call(),
+          onPressed: (){
+            Navigator.pop(context);
+            if(negAction !=null){
+              negAction.call();
+            }
+          },
           child: Text(negMessageName),
         ),
       );

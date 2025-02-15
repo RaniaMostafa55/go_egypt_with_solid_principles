@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_egypt_with_firebase/core/blocs/auth/auth_bloc.dart';
 import 'package:go_egypt_with_firebase/dialog_utils.dart';
-import 'package:go_egypt_with_firebase/features/auth/views/login_page.dart';
-import 'package:go_egypt_with_firebase/features/auth/widgets/auth_text_button.dart';
+import 'package:go_egypt_with_firebase/features/auth/domain/entities/signup_entity.dart';
+import 'package:go_egypt_with_firebase/features/auth/presentation/auth_bloc/auth_bloc.dart';
+import 'package:go_egypt_with_firebase/features/auth/presentation/auth_bloc/auth_event.dart';
+import 'package:go_egypt_with_firebase/features/auth/presentation/auth_bloc/auth_state.dart';
+import 'package:go_egypt_with_firebase/features/auth/presentation/views/login_page.dart';
+import 'package:go_egypt_with_firebase/features/auth/presentation/widgets/auth_text_button.dart';
 import 'package:go_egypt_with_firebase/features/layout/layout_view.dart';
 import 'package:go_egypt_with_firebase/generated/l10n.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+
 import '../widgets/custom_button.dart';
 import '../widgets/custom_text_field.dart';
 import '../widgets/title_text.dart';
@@ -22,7 +25,7 @@ class SignUpPage extends StatefulWidget {
 class _SignUpPageState extends State<SignUpPage> {
   final GlobalKey<FormState> _signUpFormKey = GlobalKey<FormState>();
   bool isPassHidden = true;
-  late final TextEditingController fullnameController;
+  late final TextEditingController nameController;
   late final TextEditingController emailController;
   late final TextEditingController passwordController;
   late final TextEditingController phoneController;
@@ -30,7 +33,7 @@ class _SignUpPageState extends State<SignUpPage> {
   @override
   void initState() {
     super.initState();
-    fullnameController = TextEditingController();
+    nameController = TextEditingController();
     emailController = TextEditingController();
     passwordController = TextEditingController();
     phoneController = TextEditingController();
@@ -38,7 +41,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
   @override
   void dispose() {
-    fullnameController.dispose();
+    nameController.dispose();
     emailController.dispose();
     passwordController.dispose();
     phoneController.dispose();
@@ -95,7 +98,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                   //call "CustomTextField" to ask the user to enter his full name and validate his input
                   CustomTextField(
-                    controller: fullnameController,
+                    controller: nameController,
                     label: S.of(context).full_name,
                     prefix: Icons.person,
                     //use "validator" to check if the user input meets requirements
@@ -171,18 +174,13 @@ class _SignUpPageState extends State<SignUpPage> {
                       //if the user inputs meet all requirements, an alert dialog will show up using "signUpDialog" function
                       if (_signUpFormKey.currentState!.validate()) {
                         //caching data using shared preferences
-                        final SharedPreferences prefs =
-                            await SharedPreferences.getInstance();
-                        prefs.setString("name", fullnameController.text);
-                        prefs.setString("email", emailController.text);
-                        prefs.setString("pass", passwordController.text);
-                        prefs.setString("phone", phoneController.text);
-                        context.read<AuthBloc>().signUp(
-                            username: fullnameController.text,
-                            emailAddress: emailController.text,
-                            password: passwordController.text,
-                            phone: phoneController.text,
-                            context: context);
+                        context.read<AuthBloc>().add(
+                              SignupRequested(signUpEntity: SignUpEntity(
+                                  name: nameController.text,
+                                  email: emailController.text,
+                                  password: passwordController.text,
+                                  phone: phoneController.text)),
+                            );
                       }
                     },
                     text: S.of(context).sign_up,
